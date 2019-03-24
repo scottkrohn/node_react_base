@@ -6,13 +6,11 @@ import { get } from 'lodash';
 import { getSampleInformation } from '../actions/sample-actions';
 
 class HomepageContainer extends Component {
-
 	componentDidMount = () => {
 		this.props.getSampleInformation();
-	}
+	};
 
 	render = () => {
-
 		const repos = get(this.props, 'sample.info', []);
 
 		return (
@@ -26,21 +24,19 @@ class HomepageContainer extends Component {
 						</tr>
 					</thead>
 					<tbody>
-						{(repos.length > 0) && repos.map((repoInfo, index) => {
-							return (
-								<tr key={index}>
-									{repoInfo.name}
-								</tr>
-							)
-						})}
+						{repos.length > 0 &&
+							repos.map((repoInfo, index) => {
+								return <tr key={index}>{repoInfo.name}</tr>;
+							})}
 					</tbody>
 				</table>
+				P
 			</div>
 		);
-	}
+	};
 }
 
-const mapStateToProps = state => state;
+const mapStateToProps = (state) => state;
 
 const mapActionsToProps = {
 	getSampleInformation,
@@ -48,5 +44,5 @@ const mapActionsToProps = {
 
 export default connect(
 	mapStateToProps,
-	mapActionsToProps
+	mapActionsToProps,
 )(HomepageContainer);
