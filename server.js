@@ -3,7 +3,6 @@ import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
 import path from 'path';
 
-// TODO: Should prd/dev have different config files?
 import webpackConfig from './webpack.config.js';
 
 const app = express();

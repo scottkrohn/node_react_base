@@ -10,6 +10,11 @@ module.exports = {
 		path: path.join(__dirname, 'build'),
 		filename: 'bundle.js',
 	},
+	resolve: {
+		alias: {
+			react: path.resolve(__dirname, 'node_modules', 'react')
+		},
+	},
 	module: {
 		rules: [
 			{
@@ -20,17 +25,31 @@ module.exports = {
 						loader: 'babel-loader',
 						options: {
 							presets: ['@babel/env', '@babel/react']
-						}
-					}
-				]
+						},
+					},
+				],
 			},
 			{
-				use: ['style-loader', 'css-loader'],
 				test: /\.css$/,
+				use: ['style-loader', 'css-loader'],
 			},
 			{
-				use: [{loader: 'style-loader'}, {loader: 'css-loader'}, {loader: 'less-loader'}],
 				test: /\.less$/,
+				use: [{loader: 'style-loader'}, {loader: 'css-loader'}, {loader: 'less-loader'}],
+			},
+			{
+				test: /\.(gif|svg|jpg|png)/,
+				loader: 'file-loader',
+			},
+			{
+				test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+				use: [{
+					loader: 'file-loader',
+					options: {
+						name: '[name].[ext]',
+						outputPath: 'fonts/',
+					}
+				}]
 			}
 		],
 	},
