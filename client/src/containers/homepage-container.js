@@ -30,7 +30,6 @@ class HomepageContainer extends Component {
 							})}
 					</tbody>
 				</table>
-				P
 			</div>
 		);
 	};
